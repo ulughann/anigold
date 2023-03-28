@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OAuth2 redirect page</title>
+</head>
+<body>
+    <pre id="content">Authenticating...</pre>
+
+    <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@master/dist/pocketbase.umd.js"></script>
+    <script type="text/javascript">
+        const pb = new PocketBase("http://127.0.0.1:8090");
+        const redirectUrl = 'http://127.0.0.1:3000/redirect';
+        const params = (new URL(window.location)).searchParams;
+        const provider = JSON.parse(localStorage.getItem('provider'))
+        if (provider.state !== params.get('state')) {
+            throw "State parameters don't match.";
+        }
+
+        pb.collection('users').authWithOAuth2(
+            provider.name,
+            params.get('code'),
+            provider.codeVerifier,
+            redirectUrl,
+            {
+                emailVisibility: false,
+            }
+        ).then(async(authData) => {
+            document.getElementById('content').innerText = JSON.stringify(authData, null, 2);
+
+            localStorage.setItem('authData', JSON.stringify(authData));
+
+        let name = authData?.meta?.name ?? '';
+        let avatarUrl = authData?.meta?.avatarUrl ?? '';
+
+        console.log(name);
+        console.log(avatarUrl);
+        console.log(JSON.stringify(authData))
+        const record = await pb.collection('users').update(authData.record.id, {
+         name: name,
+        avatarUrl: avatarUrl,
+        discord_id: authData?.meta?.id ?? '',
+        });
+        
+
+            window.location = '/';
+
+        }).catch((err) => {
+            document.getElementById('content').innerText = "Failed to exchange code.\n" + err;
+        });
+    </script>
+    
+</body>
+</html>

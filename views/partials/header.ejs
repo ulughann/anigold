@@ -1,0 +1,136 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/header.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@master/dist/pocketbase.umd.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animizle</title>
+</head>
+
+<link rel="stylesheet" href="/header.css">
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/assets/logo.png" width="112" height="28">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Ana Sayfa
+        </a>
+  
+        <a class="navbar-item">
+          Documentation
+        </a>
+  
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-item">
+            More    <img class="icon" style="margin-left: 6px;" src="https://icongr.am/entypo/chevron-down.svg?size=128&color=f3aa4e" width="16" height="16">
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              About
+            </a>
+            <a class="navbar-item">
+              Jobs
+            </a>
+            <a class="navbar-item">
+              Contact
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              Report an issue
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <!-- if user login -->
+            <script>
+              if (localStorage.getItem("authData") != null) {
+                let usr = JSON.parse(localStorage.getItem("authData")).meta;
+                document.write(`
+                <div>
+                  <a style="margin-right: 4px" class="button is-bordered trigger"  id="profilebtn" data-target="profile">Merhaba ${usr.name}</a>
+                </div>
+                `);
+              } else {
+                document.write('<a class="button is-bordered trigger"  id="loginbtn" data-target="login">Giriş yap</a>');
+              }
+            </script>
+
+            <a class="button is-bordered">
+              <img class="icon" src="https://icongr.am/clarity/search.svg?size=28&color=f3aa4e" width="32" height="32">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!----Login ---->
+  <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@master/dist/pocketbase.umd.js"></script>
+   <script src="/auth.js"></script> 
+  <div id="login" class="modal">
+    <div class="modal-background"></div>
+  
+    <div class="modal-content">
+      <div class="box">
+        <center>
+            <h1 class="title">Giriş Yap</h1>
+            <p class="subtitle">Animizle hesabına giriş yap</p>
+
+            <div class="buttons" style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            ">
+                <ul id="list">
+                    <li>Loading OAuth2 providers...</li>
+                </ul>
+            </div>
+        </center>
+      </div>
+    </div>
+  
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+  <!----Profile ---->
+  <div id="profile" class="modal">
+    <div class="modal-background"></div>
+  
+    <div class="modal-content">
+      <div class="box">
+        <center>
+            <script>
+              //avatar
+              document.write(`<img src="${JSON.parse(localStorage.getItem("authData")).meta.avatarUrl}" width="100" height="100" style="border-radius: 50%; margin-bottom: 10px;">`);
+              document.write(`<h1 class="title">${JSON.parse(localStorage.getItem("authData")).meta.name}</h1>`);
+              document.write(`<p class="subtitle">${JSON.parse(localStorage.getItem("authData")).meta.email}</p>`);
+            </script>
+    
+        </center>
+      </div>
+    </div>
+  
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>

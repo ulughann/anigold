@@ -1,0 +1,45 @@
+{
+    "meta": {
+        "id": "170025264683579864440",
+        "name": "cosmos#4125",
+        "username": "cosmos",
+        "email": "test@outlook.com",
+        "avatarUrl": "https://cdn.discordapp.com/avatars/1002526468359864440/dc1aa2b3d8ad61cf3701db934ee7ab4a.png",
+        "rawUser": {
+            "accent_color": 11389680,
+            "avatar": "dc1aa2b3d8ad61cf3701db934ee7ab4a",
+            "avatar_decoration": null,
+            "banner": null,
+            "banner_color": "#ADCAF0",
+            "discriminator": "4125",
+            "display_name": null,
+            "email": "test@outlook.com",
+            "flags": 4194368,
+            "id": "170025264683759864440",
+            "locale": "en-US",
+            "mfa_enabled": true,
+            "premium_type": 0,
+            "public_flags": 4194368,
+            "username": "cosmos",
+            "verified": true
+        },
+        "accessToken": "6i8eimJ4njT1ktKVHbrMkOLdUuIEJp",
+        "refreshToken": "QUYPTx8UcC6URNA0WFOuFPNcrVcojM"
+    },
+    "record": {
+        "avatarUrl": "",
+        "collectionId": "_pb_users_auth_",
+        "collectionName": "users",
+        "created": "2023-02-01 16:45:04.672Z",
+        "discord_id": "",
+        "email": "admin@admin.com",
+        "emailVisibility": false,
+        "id": "i6orce2nr7v6l2p",
+        "name": "",
+        "updated": "2023-02-01 16:45:04.672Z",
+        "username": "admin",
+        "verified": true,
+        "expand": {}
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2xsZWN0aW9uSWQiOiJfcGJfdXNlcnNfYXV0aF8iLCJleHAiOjE2NzY0Nzk3NDIsImlkIjoiaTZvcmNlMm5yN3Y2bDJwIiwidHlwZSI6ImF1dGhSZWNvcmQifQ.13mO3IbHoEXtxYUdkgrFO88IbOcTzGkaoGhdXcKlDTE"
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anigold</title>
+</head>
+<%- include('partials/header') %>
+<link rel="stylesheet" href="/anime.css">
+<script src="/anime.js"></script>
+<body>
+    <center>
+    <h1 class="title"> <%= title %></h1>
+    <h2 class="subtitle"> <%= description %></h2>
+
+    <div class="episodes">
+        <h3 class="episodes-title">Bölümler</h3>
+        <ul class="episodes-list">
+            <% episodes.forEach(episode => { %>
+                <li class="episode-item">
+                    <a href="/anime/ep/<%= episode %>">
+                        <div class="ep" style="
+                        width: 50%;
+                        height: 35px;
+                        background-color: #342f2f;
+                        border-radius: 5px;
+                        margin: 4px;
+                        ">
+                            <p style="font-size: 30px;" class="subtitle">Bölüm <%= episodes.indexOf(episode)+1 %></p>
+                        </div>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+    </center>
+
+    
+</body>
+</html>
